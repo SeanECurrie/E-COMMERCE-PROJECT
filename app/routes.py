@@ -8,7 +8,6 @@ def get_driver_info(productName):
 @app.route('/')
 @app.route('/home')
 def home():
-    print('doing stuff')
     allProducts = 'https://fakestoreapi.com/products'
     getAllProducts = requests.get(allProducts)
     productName = getAllProducts.json()[2]
@@ -25,6 +24,7 @@ def home():
         rating = getAllProducts.json()[i]['rating']
 
         productInfo = {
+            'id': i,
             'name': name,
             'price': price,
             'description': description,
@@ -33,7 +33,22 @@ def home():
             'rating': rating
             }
         i += 1
-        
         results.append(productInfo)
         if i > 19:
             return render_template('index.html', results=results)
+
+
+@app.route('/product/<int:id>')
+def productView(id):
+    allProducts = 'https://fakestoreapi.com/products'
+    getAllProducts = requests.get(allProducts)
+    productName = getAllProducts.json()[2]
+
+    name = getAllProducts.json()[id]['title']
+    price = getAllProducts.json()[id]['price']
+    description = getAllProducts.json()[id]['description']
+    category = getAllProducts.json()[id]['category']
+    image = getAllProducts.json()[id]['image']
+    rating = getAllProducts.json()[id]['rating']
+
+    return render_template('single-product-view.html', name=name, price=price, description=description, category=category, image=image, rating=rating)
