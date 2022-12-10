@@ -20,7 +20,7 @@ def signup():
             #instantiate User from models
             user = User(username, email, password)
 
-            #add user to database
+            # add user to database
             # db.session.add(user)
             # db.session.commit()
             user.save_to_db()
