@@ -22,27 +22,27 @@ class User(db.Model, UserMixin):
         db.session.add(self)
         db.session.commit()
 
-# class Post(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String(150), nullable=False)
-#     img_url = db.Column(db.String)
-#     caption = db.Column(db.String(300))
-#     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(150), nullable=False)
+    image = db.Column(db.String)
+    price = db.Column(db.Integer)
+    qty = db.Column(db.Integer)
+    
 
-#     def __init__(self, title, img_url, caption, user_id):
-#         self.title = title
-#         self.img_url = img_url
-#         self.caption = caption
-#         self.user_id = user_id
+    def __init__(self, title, image, price, qty):
+        self.title = title
+        self.image = image
+        self.price = price
+        self.qty = qty
 
-#     def save_to_db(self):
-#         db.session.add(self)
-#         db.session.commit()
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
 
-#     def update_db(self):
-#         db.session.commit()
+    def update_db(self):
+        db.session.commit()
 
-#     def delete_from_db(self):
-#         db.session.delete(self)
-#         db.session.commit()
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()
