@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), nullable=False, unique=True)
     email = db.Column(db.String(150), nullable=False, unique=True)
     password = db.Column(db.String(250), nullable=False)
-    # post = db.relationship('Post', backref='author', lazy=True)
+    cart = db.relationship('Cart', backref='Owner', lazy=True)
 
     def __init__(self, username, email, password):
         self.username = username
@@ -28,13 +28,15 @@ class Cart(db.Model):
     image = db.Column(db.String)
     price = db.Column(db.Integer)
     qty = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     
 
-    def __init__(self, title, image, price, qty):
+    def __init__(self, title, image, price, qty, user_id):
         self.title = title
         self.image = image
         self.price = price
         self.qty = qty
+        self.user_id = user_id
 
     def save_to_db(self):
         db.session.add(self)
