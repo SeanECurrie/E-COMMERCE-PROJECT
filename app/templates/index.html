@@ -2,58 +2,12 @@
 
 
 {% block content %}
-      
-      <div class="card">
-            <div class="card__title">
-              <div class="icon">
-                <a href="#"><i class="fa fa-arrow-left"></i></a>
-              </div>
-              <h3>New products</h3>
-            </div>
-            <div class="card__body">
-              <div class="half">
-                <div class="featured_text">
-                  <h1>Nurton</h1>
-                  <p class="sub">Office Chair</p>
-                  <p class="price">$210.00</p>
-                </div>
-                <div class="image">
-                  <img src="https://images-na.ssl-images-amazon.com/images/I/613A7vcgJ4L._SL1500_.jpg" alt="">
-                </div>
-              </div>
-              <div class="half">
-                <div class="description">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem nam pariatur voluptate perferendis, asperiores aspernatur! Porro similique consequatur, nobis soluta minima, quasi laboriosam hic cupiditate perferendis esse numquam magni.</p>
-                </div>
-                <span class="stock"><i class="fa fa-pen"></i> Out stock</span>
-                <div class="reviews">
-                  <ul class="stars">
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star-o"></i></li>
-                  </ul>
-                  <span>(64 reviews)</span>
-                </div>
-              </div>
-            </div>
-            <div class="card__footer">
-              <div class="recommend">
-                <p>Recommended by</p>
-                <h3>Andrew Palmer</h3>
-              </div>
-              <div class="action">
-                <button type="button">Add to cart</button>
-              </div>
-            </div>
-          </div>
 
 {% for product in results %}
 
-  <div class="card" style="width: 18rem;">
-      <img src="{{ product.image }}" class="card-img-top">
-      <div class="card-body">
+  <div class="card shadow-lg" style="width: 18rem; border-radius: 7%;" >
+     <img src="{{ product.image }}" class="card-img-top" style="border-radius: 7%;">
+      <div class="card-body shadow-lg">
         <h5 class="card-title">{{ product.name.title() }}</h5>
         <p class="card-text">{{ product.description }}</p>
       </div>
@@ -62,7 +16,7 @@
         <li class="list-group-item">${{ product.price }}</li>
         <li class="list-group-item">Rated {{ product.rating.rate }} stars by {{ product.rating.count }} customers</li>
       </ul>
-      <div class="card-body">
+      <div class="card-body shadow-lg" style="border-radius: 7%">
         <a href="/product/{{ product.id }}" class="card-link">View</a>
         <a href="/cart/{{ product.id }}" class="card-link">Add to cart</a>
       </div>
