@@ -2,25 +2,29 @@
 
 
 {% block content %}
-
+<div class= "item-holder">
 {% for product in results %}
 
-  <div class="card shadow-lg" style="width: 18rem; border-radius: 7%;" >
-     <img src="{{ product.image }}" class="card-img-top" style="border-radius: 7%;">
-      <div class="card-body shadow-lg">
+  <div class="card shadow-lg item-holder" style="width: 18rem; border-radius: 7%;" >
+     <img src="{{ product.image }}" class="card-img-top" style="border-radius: 7%;width: 30vw; height: 25vh">
+      <div class="card-body shadow-lg ">
         <h5 class="card-title">{{ product.name.title() }}</h5>
-        <p class="card-text">{{ product.description }}</p>
+        <!-- <p class="card-text">{{ product.description }}</p> -->
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">{{ product.category.title() }}</li>
         <li class="list-group-item">${{ product.price }}</li>
         <li class="list-group-item">Rated {{ product.rating.rate }} stars by {{ product.rating.count }} customers</li>
       </ul>
-      <div class="card-body shadow-lg" style="border-radius: 7%">
-        <a href="/product/{{ product.id }}" class="card-link">View</a>
-        <a href="/cart/{{ product.id }}" class="card-link">Add to cart</a>
+      <div class="card-body shadow-lg " style="border-radius: 7%">
+        <div class="action">
+          <a href="/product/{{ product.id }}" class="card-link"><button type="button">View</button></a> 
+          <a href="/cart/{{ product.id }}" class="card-link"><button type="button">Add to cart</button></a>
+        </div>
       </div>
     </div>
+ 
 
 {% endfor %}
+</div>
 {% endblock %}

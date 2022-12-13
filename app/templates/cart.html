@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class= "item-holder">
 {% for product in user_cart %}
 
-  <div class="card" style="width: 18rem;">
+  <div class="card shadow-lg item-holder" style="width: 18rem;border-radius: 7%;">
       <img src="{{ product.image }}" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">{{ product.title.title() }}</h5>
@@ -12,12 +12,12 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${{ product.price }}</li>
       </ul>
-      <div class="card-body">
+      <div class="card-body shadow-lg " style="border-radius: 7%">
         <a href="/product/{{ product.id }}" class="card-link">View</a>
         <a href="#" class="card-link">Add to cart</a>
       </div>
     </div>
 
 {% endfor %}
-
+</div>
 {% endblock %}
